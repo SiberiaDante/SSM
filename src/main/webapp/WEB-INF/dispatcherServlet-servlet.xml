@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--启用spring的一些annotation -->
+    <context:annotation-config/>
+
+    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <mvc:annotation-driven/>
+
+    <!--SpringMVC的配置文件，包含网站跳转逻辑的控制，配置  -->
+    <context:component-scan base-package="com.dante.ssm" use-default-filters="false">
+        <!--只扫描控制器 -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--静态资源映射-->
+    <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
+    <mvc:resources mapping="/css/**" location="/WEB-INF/statics/css/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>
+    <mvc:resources mapping="/image/**" location="/WEB-INF/statics/image/"/>
+
+    <!--配置视图解析器，方便页面返回  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="exposeContextBeansAsAttributes" value="true"/>
+    </bean>
+
+    <!--两个标准配置  -->
+    <!-- 将springmvc不能处理的请求交给tomcat -->
+    <mvc:default-servlet-handler/>
+    <!-- 能支持springmvc更高级的一些功能，JSR303校验，快捷的ajax...映射动态请求 -->
+    <mvc:annotation-driven/>
+</beans>
