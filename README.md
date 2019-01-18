@@ -1,8 +1,8 @@
 # SSM
 SSM-CRUD:基于Spring+SpringMVC+MyBatis的框架
 
-#### 介绍
-SSM-CRUD:基于Spring+SpringMVC+MyBatis的框架
+### 介绍
+SSM-CRUD:基于Spring+SpringMVC+MyBatis框架的增删改查
 * 编辑器：IntelliJ IDEA
 * 依赖管理：Maven
 * 基础框架：SpringMVC+Spring+Mybatis
@@ -12,6 +12,7 @@ SSM-CRUD:基于Spring+SpringMVC+MyBatis的框架
 * 实现功能：增删改查
 * MyBatis 逆向工程生成对应的Bean和Mapper
 
+### 框架搭建说明
 #### 1.创建Maven工程，并创建对应包
 ![图片1](/img/1.png)
 
@@ -667,3 +668,5 @@ age:${user.age}
 ```
 * 6.3 运行项目，输入地址：http://localhost:8080/user/1
 ![图片3](/img/3.png)
+
+### CRUD
