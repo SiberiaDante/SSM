@@ -25,6 +25,7 @@
         <property name="driverClass" value="${jdbc.driverClass}"/>
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
+        <property name="checkoutTimeout" value="${jdbc.maxWait}"/>
     </bean>
 
     <!--================== 配置和MyBatis的整合=============== -->

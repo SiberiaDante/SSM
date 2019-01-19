@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+
 @Controller
 public class EmployeeController {
 
@@ -27,9 +28,8 @@ public class EmployeeController {
 
     /**
      * 分页查询员工信息
-     * @param pn
-     * @param model
-     * @return
+     *
+     * @param pn 页码
      */
     @RequestMapping(method = RequestMethod.GET, name = "/emps")
     public String getEmployeeByPage(@RequestParam(value = "pn", defaultValue = PageConstant.START_DEFAULT_PAGE) Integer pn, Model model) {
