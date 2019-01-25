@@ -28,6 +28,8 @@ public interface IEmployeeDao {
     //查询指定员工带部门
     Employee selectWithDeptByPrimaryKey(Integer empId);
 
+    void saveEmp(Employee employee);
+
     int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
 
     int updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);

@@ -49,7 +49,7 @@ public class EmployeeServiceTest extends BaseJunitTest {
     //根据id查询员工带部门信息
     @Test
     public void getEmployeeWithDeptById() {
-        Employee employee = employeeService.getAllEmployeeWithDepartmentById(20);
+        Employee employee = employeeService.getEmployeeById(20);
         logger.info("---" + employee.getEmpId() + "---" + employee.getdId() + "---" + employee.getEmpName() + "---" + employee.getEmail() + "---" + employee.getGender() +
                 "---" + employee.getDepartment().getDeptName());
     }

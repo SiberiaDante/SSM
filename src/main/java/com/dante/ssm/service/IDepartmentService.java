@@ -12,5 +12,5 @@ public interface IDepartmentService {
     int insertSelective(Department record);
 
     //查询所有部门信息
-    List<Department> selectByExample(DepartmentExample example);
+    List<Department> getAllDepartments();
 }

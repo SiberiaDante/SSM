@@ -7,6 +7,7 @@ import com.dante.ssm.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,7 +40,53 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     //根据id查询员工带部门信息
     @Override
-    public Employee getAllEmployeeWithDepartmentById(Integer empId) {
+    public Employee getEmployeeById(Integer empId) {
         return this.employeeDao.selectWithDeptByPrimaryKey(empId);
+    }
+
+    /**
+     * @param name 员工姓名
+     * @return true：可用
+     */
+    @Override
+    public boolean isEmpNameCanUse(String name) {
+        EmployeeExample employeeExample = new EmployeeExample();
+        EmployeeExample.Criteria criteria = employeeExample.createCriteria();
+        criteria.andEmpNameEqualTo(name);
+        long count = this.employeeDao.countByExample(employeeExample);
+        return count == 0;
+    }
+
+    //保存员工
+    @Override
+    public void saveEmployee(Employee employee) {
+        this.employeeDao.insertSelective(employee);
+    }
+
+    //根据ID删除员工
+    @Override
+    public void deleteEmpById(String empId) {
+        this.employeeDao.deleteByPrimaryKey(Integer.valueOf(empId));
+    }
+
+    //批量删除
+    @Override
+    public void deleteBatch(String empIds) {
+        EmployeeExample employeeExample = new EmployeeExample();
+        EmployeeExample.Criteria criteria = employeeExample.createCriteria();
+        String[] split = empIds.split("-");
+        List<Integer> ids = new ArrayList<>();
+        for (String id : split) {
+            ids.add(Integer.valueOf(id));
+
+        }
+        criteria.andEmpIdIn(ids);
+        this.employeeDao.deleteByExample(employeeExample);
+    }
+
+    //根据id更新员工
+    @Override
+    public void updateEmployee(Employee emp) {
+        this.employeeDao.updateByPrimaryKeySelective(emp);
     }
 }

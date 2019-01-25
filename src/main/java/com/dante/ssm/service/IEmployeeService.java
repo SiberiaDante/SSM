@@ -15,5 +15,22 @@ public interface IEmployeeService {
     List<Employee> getAllEmployeeWithDepartment();
 
     //查询指定员工带部门
-    Employee getAllEmployeeWithDepartmentById(Integer empId);
+    Employee getEmployeeById(Integer empId);
+
+    //查询name是否存在
+    boolean isEmpNameCanUse(String name);
+
+    //保存员工
+    void saveEmployee(Employee employee);
+
+    //删除员工
+    void deleteEmpById(String empId);
+
+    //批量删除
+    void deleteBatch(String empIds);
+
+    //更新员工信息
+    void updateEmployee(Employee employee);
+
+
 }

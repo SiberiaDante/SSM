@@ -7,7 +7,6 @@
     <display-name>Archetype Created Web Application</display-name>
     <!--1.启动Spring容器-->
     <!-- needed for ContextLoaderListener -->
-    <!--要增加的代码：开始-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
@@ -16,7 +15,6 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!--要增加的代码：结束-->
 
     <!--2.springmvc的前端控制器，拦截所有请求  -->
     <!--The front controller of this Spring Web application, responsible for handling all application requests -->
@@ -77,6 +75,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>/index.jsp</welcome-file>

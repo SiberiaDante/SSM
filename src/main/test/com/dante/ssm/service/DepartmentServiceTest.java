@@ -19,7 +19,7 @@ public class DepartmentServiceTest extends BaseJunitTest {
         departmentService.insertSelective(new Department(null, "测试部"));
         //
 
-        List<Department> departmentList = departmentService.selectByExample(null);
+        List<Department> departmentList = departmentService.getAllDepartments();
         for (Department department : departmentList) {
             logger.info("---" + department.getDeptId() + "---" + department.getDeptName());
         }

@@ -26,7 +26,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
     }
 
     @Override
-    public List<Department> selectByExample(DepartmentExample example) {
-        return this.departmentDao.selectByExample(example);
+    public List<Department> getAllDepartments() {
+        return this.departmentDao.selectByExample(null);
     }
 }
